@@ -7,6 +7,14 @@ spring:
   application:
     name: groceryMain
 
+  jpa:
+    #hibernate:
+#      ddl-auto: create
+      #ddl-auto: update
+    show-sql: true
+    format-sql: true
+    #use-sql-comments: true
+
 #自定义属性
 custom-property:
     #设置摄影页面分页时一个页面显示多少个数据
