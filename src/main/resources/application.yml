@@ -7,6 +7,52 @@ spring:
   application:
     name: groceryMain
 
+#自定义属性
+custom-property:
+    #设置摄影页面分页时一个页面显示多少个数据
+    photographyDetailPageSize: 15
+    #设置留言板页面分页时一个页面显示多少个数据
+    messageBoardPageSize: 20
+    #设置留言板子回复页面分页时一个页面显示多少个数据
+    subReply: 20
+    #管理页面分页时一个页面显示多少个数据
+    adminPageSize: 20
+    #设置分页时导航条显示多少个页签
+    paginationDisplayNum: 5
+    loginOnly:
+      - /personalPage/main
+    #设置访问者页面但也显示多少数据
+    visitorInfoPageSize: 20
+
+    #邮件发送的纯文本topic名字
+    emailTopicText: email.topicService.text
+
+    #邮件发送的对象类型topic名字
+    emailTopicObject: email.topicService.object
+
+    #队列模式
+    emailQueueName: email.queueService.text
+
+    #队列模式
+    emailQueueObject: email.queueService.object
+
+    druidConfig:
+          #IP白名单 (没有配置或者为空，则允许所有访问)
+          allow: 192.168.16.110,127.0.0.1
+          #IP黑名单 (存在共同时，deny优先于allow)
+          deny: 192.168.16.111
+          #用户名
+          loginUsername: admin
+          #密码
+          loginPassword: Albertliu123!
+          #禁用HTML页面上的“Reset All”功能
+          resetEnable: false
+          #过滤所有路径
+          filterUrlPatterns: /*
+          #除了图片还有druid路径下的数据
+          filterInitParameter: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+
+
 ---
 #服务注册中心端口号
 server:
