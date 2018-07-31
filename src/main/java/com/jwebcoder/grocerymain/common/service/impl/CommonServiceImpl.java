@@ -21,7 +21,7 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public List<NavigatationMenu> getNavMenu(String path) {
-        List<NavigatationMenu> navigatationMenus = JacksonTools.readValueForObject(redisTemplate.opsForValue().get("navigatationMenus"), List.class);
+        List<NavigatationMenu> navigatationMenus = JacksonTools.readValueForList(redisTemplate.opsForValue().get("navigatationMenus"), NavigatationMenu.class);
 
         if (navigatationMenus == null) {
             navigatationMenus = navigatationMenuRepository.findAll();
