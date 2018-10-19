@@ -21,11 +21,9 @@ public class GrocerySecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         List<RequestMatcher> requestMatchers = new ArrayList<>();
         requestMatchers.add(new AntPathRequestMatcher("/common/**"));
-//        requestMatchers.add(new AntPathRequestMatcher(""));
         http.csrf().disable()
-//        .requestMatcher(new OrRequestMatcher(requestMatchers))
+        .requestMatcher(new OrRequestMatcher(requestMatchers))
 
-        .authorizeRequests().antMatchers("/**").permitAll();
-        super.configure(http);
+        .authorizeRequests().antMatchers("/common/**").permitAll();
     }
 }
