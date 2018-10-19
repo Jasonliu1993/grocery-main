@@ -1,29 +1,19 @@
 package com.jwebcoder.grocerymain.config;
 
-import com.jwebcoder.grocerymain.common.utils.EncryptionUtility;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
 @Configuration
-
-public class GroceryResourceConfig extends WebSecurityConfigurerAdapter {
+public class GroceryResourceConfig extends ResourceServerConfigurerAdapter {
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/common/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .sessionManagement()
-                .and()
-                .logout()
-                .and()
-                .httpBasic();
+    public void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .antMatcher("/**").authorizeRequests()
+                .antMatchers("/common/**")
+                .permitAll()
+                .anyRequest().authenticated();
     }
 
     /*@Override

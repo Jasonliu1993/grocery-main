@@ -8,6 +8,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.RequestContextListener;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.ServletRequestListener;
@@ -24,13 +25,20 @@ public class GroceryConfiguration implements WebMvcConfigurer {
     @Autowired
     private CustomProperty customProperty;
 
+    @Autowired
+    private GroceryTokenInterceptor groceryTokenInterceptor;
+
     @Bean
     public ServletRequestListener createServletRequestListener() {
         return new RequestContextListener();
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(groceryTokenInterceptor);
+    }
 
-   /* @Bean(name = "multipartResolver")
+    /* @Bean(name = "multipartResolver")
     public MultipartResolver multipartResolver() {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
         resolver.setDefaultEncoding("UTF-8");

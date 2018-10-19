@@ -5,6 +5,7 @@ import com.jwebcoder.grocerymain.common.repository.NavigatationMenuRepository;
 import com.jwebcoder.grocerymain.common.service.CommonService;
 import com.jwebcoder.grocerymain.common.utils.JacksonTools;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +17,10 @@ public class CommonServiceImpl implements CommonService {
     @Autowired
     private NavigatationMenuRepository navigatationMenuRepository;
 
-    @Autowired
-    private StringRedisTemplate redisTemplate;
-
+    @Cacheable
     @Override
     public List<NavigatationMenu> getNavMenu(String path) {
-        List<NavigatationMenu> navigatationMenus = JacksonTools.readValueForList(redisTemplate.opsForValue().get("navigatationMenus"), NavigatationMenu.class);
-
-        if (navigatationMenus == null) {
-            navigatationMenus = navigatationMenuRepository.findAll();
-
-            redisTemplate.opsForValue().set("navigatationMenus", JacksonTools.writteObjectToValue(navigatationMenus));
-        }
+        List<NavigatationMenu> navigatationMenus = navigatationMenuRepository.findAll();
 
         /**
          * 标识是在哪个页面，将导航条设置成高亮
