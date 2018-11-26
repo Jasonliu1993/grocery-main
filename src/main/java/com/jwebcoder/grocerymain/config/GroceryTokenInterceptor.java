@@ -1,5 +1,6 @@
 package com.jwebcoder.grocerymain.config;
 
+import com.jwebcoder.grocerymain.utils.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -16,9 +17,11 @@ public class GroceryTokenInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String token = request.getHeader("token");
+        String token = TokenUtil.getToken(request.getHeader("Authorization"));
         logger.info("token++++++++{}", token);
         request.setAttribute("groceryToken", token);
         return true;
     }
+
+
 }
