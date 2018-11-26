@@ -1,4 +1,4 @@
-package com.jwebcoder.grocerymain.utils;
+package com.jwebcoder.grocerymain.common.utils;
 
 import org.apache.commons.lang.StringUtils;
 

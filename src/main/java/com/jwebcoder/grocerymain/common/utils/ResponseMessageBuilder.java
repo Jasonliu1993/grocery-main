@@ -2,24 +2,23 @@ package com.jwebcoder.grocerymain.common.utils;
 
 
 import com.jwebcoder.grocerymain.common.dto.ResponseMessage;
-import com.jwebcoder.grocerymain.common.exception.ErrorException;
 import com.jwebcoder.grocerymain.common.exception.StatusCode;
 
 /**
  * Created by Jason on 10/10/2017.
  */
-public class PackingInfo {
+public class ResponseMessageBuilder {
 
-    public static ResponseMessage changeException2Message (ErrorException errorException) {
+    public static ResponseMessage failed (StatusCode statusCode) {
         ResponseMessage message = new ResponseMessage();
 
-        message.setCode(errorException.getCode());
-        message.setMessage(errorException.getMessage());
+        message.setCode(statusCode.getCode());
+        message.setMessage(statusCode.getErrorMessage());
 
         return message;
     }
 
-    public static ResponseMessage changeData2Message(Object object) {
+    public static ResponseMessage success(Object object) {
 
         ResponseMessage message = new ResponseMessage();
 

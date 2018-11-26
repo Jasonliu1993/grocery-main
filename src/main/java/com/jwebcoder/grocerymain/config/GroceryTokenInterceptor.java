@@ -1,6 +1,6 @@
 package com.jwebcoder.grocerymain.config;
 
-import com.jwebcoder.grocerymain.utils.TokenUtil;
+import com.jwebcoder.grocerymain.common.utils.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

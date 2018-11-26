@@ -1,7 +1,7 @@
 package com.jwebcoder.grocerymain.common.exception;
 
 import com.jwebcoder.grocerymain.common.dto.ResponseMessage;
-import com.jwebcoder.grocerymain.common.utils.PackingInfo;
+import com.jwebcoder.grocerymain.common.utils.ResponseMessageBuilder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,12 +17,7 @@ public class CatchException {
     @ResponseBody
     public ResponseMessage catchException(RuntimeException runtimeException) {
 
-        if (runtimeException instanceof ErrorException) {
-            return PackingInfo.changeException2Message((ErrorException) runtimeException);
-        } else {
-            runtimeException.printStackTrace();
-            return PackingInfo.changeException2Message(new ErrorException(StatusCode.UNKNOWN));
-        }
+        return ResponseMessageBuilder.failed(StatusCode.UNKNOWN);
 
     }
 

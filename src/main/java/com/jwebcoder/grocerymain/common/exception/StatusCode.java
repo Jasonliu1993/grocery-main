@@ -5,12 +5,12 @@ package com.jwebcoder.grocerymain.common.exception;
  */
 public enum StatusCode {
 
-    UNKNOWN(-1, "未知错误"),
-    SUCCESSFUL(100,"成功"),
-    FAILED(101, "内部错误"),
-    NULL_FILE(102,"文件不能为空"),
-    FAILED_UPLOAD(103,"文件上传失败"),
-    SUCCESSFUL_UPLOAD(104,"文件上传成功")
+    SUCCESSFUL(10000,"成功"),
+    UNKNOWN(20000, "未知错误"),
+    FAILED(20001, "内部错误"),
+    NULL_FILE(20002,"文件不能为空"),
+    FAILED_UPLOAD(20003,"文件上传失败"),
+    SUCCESSFUL_UPLOAD(20004,"文件上传成功")
     ;
 
     private int code;
