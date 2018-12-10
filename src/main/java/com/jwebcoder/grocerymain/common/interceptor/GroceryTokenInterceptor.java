@@ -1,4 +1,4 @@
-package com.jwebcoder.grocerymain.config;
+package com.jwebcoder.grocerymain.common.interceptor;
 
 import com.jwebcoder.grocerymain.common.utils.TokenUtil;
 import org.slf4j.Logger;

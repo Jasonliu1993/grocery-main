@@ -25,7 +25,7 @@ public class SystemUser {
      *
      * @mbggenerated
      */
-    @Column(name = "VERSION", insertable = false, updatable = true)
+    @Column(name = "VERSION")
     private Integer version;
 
     /**
@@ -91,7 +91,7 @@ public class SystemUser {
     private String lastLoginDatetime;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "PERSONAL_INFO_ID", referencedColumnName = "id")
+    @JoinColumn(name = "PERSONAL_INFO_ID", referencedColumnName = "ID")
     private PersonalInfo personalInfo;
 
     /**

@@ -9,7 +9,7 @@ import com.jwebcoder.grocerymain.common.exception.StatusCode;
  */
 public class ResponseMessageBuilder {
 
-    public static ResponseMessage failed (StatusCode statusCode) {
+    public static ResponseMessage failed(StatusCode statusCode) {
         ResponseMessage message = new ResponseMessage();
 
         message.setCode(statusCode.getCode());
@@ -25,6 +25,17 @@ public class ResponseMessageBuilder {
         message.setCode(StatusCode.SUCCESSFUL.getCode());
         message.setMessage(StatusCode.SUCCESSFUL.getErrorMessage());
         message.setData(object);
+
+        return message;
+    }
+
+    public static ResponseMessage success() {
+
+        ResponseMessage message = new ResponseMessage();
+
+        message.setCode(StatusCode.SUCCESSFUL.getCode());
+        message.setMessage(StatusCode.SUCCESSFUL.getErrorMessage());
+        message.setData(null);
 
         return message;
     }
